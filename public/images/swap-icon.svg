@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.584" height="17.832" viewBox="0 0 19.584 17.832">
+  <g id="Iconly_Two-tone_Swap" data-name="Iconly/Two-tone/Swap" transform="translate(-2.083 -3.082)">
+    <g id="Swap" transform="translate(2.833 3.832)">
+      <path id="Stroke_1" data-name="Stroke 1" d="M0,14.368a.75.75,0,0,0,1.5,0ZM1.5.75A.75.75,0,0,0,0,.75Zm0,13.618V.75H0V14.368Z" transform="translate(13.256 1.964)" fill="#124062"/>
+      <path id="Stroke_3" data-name="Stroke 3" d="M9.437,1.279A.75.75,0,1,0,8.374.221ZM4.828,4.847,4.3,5.376a.75.75,0,0,0,1.063,0ZM1.282.221A.75.75,0,0,0,.218,1.279Zm7.092,0L4.3,4.318,5.359,5.376l4.078-4.1Zm-3.015,4.1L1.282.221.218,1.279,4.3,5.376Z" transform="translate(9.178 11.486)" fill="#124062"/>
+      <path id="Stroke_5" data-name="Stroke 5" d="M1.5.75A.75.75,0,0,0,0,.75ZM0,14.368a.75.75,0,0,0,1.5,0ZM0,.75V14.368H1.5V.75Z" transform="translate(3.328 -0.749)" fill="#124062"/>
+      <path id="Stroke_7" data-name="Stroke 7" d="M.218,4.318A.75.75,0,0,0,1.282,5.376ZM4.828.75,5.359.221A.75.75,0,0,0,4.3.221ZM8.374,5.376A.75.75,0,0,0,9.437,4.318Zm-7.092,0,4.078-4.1L4.3.221.218,4.318ZM4.3,1.279l4.078,4.1L9.437,4.318,5.359.221Z" transform="translate(-0.75 -0.75)" fill="#124062"/>
+    </g>
+  </g>
+</svg>

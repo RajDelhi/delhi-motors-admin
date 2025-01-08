@@ -1,0 +1,10 @@
+.login h1 a {
+  background: url('https://www.paperstreet.com/images/logo.png') no-repeat top center;
+  width: 326px;
+  height: 73px;
+  text-indent: -9999px;
+  overflow: hidden;
+  padding-bottom: 15px;
+  display: block;
+  background-size: contain;
+}

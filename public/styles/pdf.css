@@ -1,0 +1,51 @@
+/* Modifies page style for use in PDF generation */
+@page {
+	margin: 40px 0 40px 0;
+	height: 100%;
+}
+
+html {
+	background: #fff;
+}
+
+#container {
+	display: block;
+}
+
+main {
+	padding: 0;
+	margin-top: 60px;
+}
+
+.hide-in-pdf,
+.hide-for-pdf,
+.button-back,
+.header .nav,
+.banner::before,
+.accordion-item-title::after,
+.posts-slider-arrows {
+	display: none !important;
+}
+
+.accordion-item-content,
+.show-in-pdf {
+	display: block !important;
+}
+
+.header {
+	position: static;
+}
+
+.single-attorneys .banner {
+	background: #edf1f5 !important;
+}
+
+.pagebreak {
+	page-break-before: always;
+}
+
+.pageNumber,
+.totalPages,
+.pdfooter {
+	font-size: 24px;
+}

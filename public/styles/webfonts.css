@@ -1,0 +1,81 @@
+/* For Google Fonts, strongly recommend use of: https://google-webfonts-helper.herokuapp.com/fonts */
+
+/* 1. Upload the .woff and .woff2 fonts to your theme folder /fonts/ */
+/* 2. Generate CSS for "Modern Browsers" and paste it here */
+/* 3. Add a font-display property each @font-face: https://css-tricks.com/almanac/properties/f/font-display/ */
+/* 4. Preload your most commonly used .woff2 file in functions.php */
+
+/* font-display: swap favors a FOUT (Flash of Unstyled Text); it requests the browser use a fallback font until our font loads */
+/* font-display: optional favors a FOIT (Flash of Invisible Text); it hides text, but quickly decides whether to allow our font to load */
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-Black.woff2') format('woff2');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-ExtraLight.woff2') format('woff2');
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-Bold.woff2') format('woff2');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-ExtraBold.woff2') format('woff2');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-Thin.woff2') format('woff2');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../fonts/Outfit-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
