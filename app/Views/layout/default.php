@@ -110,7 +110,7 @@
 				<div class="header-inner">
 					<a href="<?= base_url(); ?>" class="">
                                            
-						<img class="responsive-img"  src="<?= base_url() . 'images/delhi_motors_logo.png' ?>" alt="Delhi Motors" />
+						<img class="responsive-img"  src="<?= base_url() . 'images/delhi_motors_logo.png' ?>" alt="Delhi Motorss" />
 					</a>
 
 					<aside class="header-right">
