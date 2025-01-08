@@ -31,9 +31,9 @@ $routes->get('all-user', 'Agent::all_users', ['filter' => 'authGuard']);
 //******************************************************** */
 
 
-$routes->get('dashboard', 'invoice::index', ['filter' => 'authGuard']);
-$routes->get('estimate-bill', 'invoice::estimate', ['filter' => 'authGuard']);
-$routes->get('bill', 'invoice::billing', ['filter' => 'authGuard']);
+$routes->get('dashboard', 'Invoice::index', ['filter' => 'authGuard']);
+$routes->get('estimate-bill', 'Invoice::estimate', ['filter' => 'authGuard']);
+$routes->get('bill', 'Invoice::billing', ['filter' => 'authGuard']);
 
 //$routes->get('dashboard', 'Item::dashboard', ['filter' => 'authGuard']);
 $routes->get('agent-profile', 'Agent::edit_profile', ['filter' => 'authGuard']);
