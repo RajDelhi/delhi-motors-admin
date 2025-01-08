@@ -88,7 +88,7 @@ define('PER_PAGE_RECORD', 20);
  * @deprecated Use \CodeIgniter\Events\Events::PRIORITY_NORMAL instead.
  */
 define('EVENT_PRIORITY_NORMAL', 100);
-define('AGENT_EXIST', "The agent account is already registered with this email. ");
+define('AGENT_EXIST', "The employee account is already registered with this email. ");
 define('AGENT_NOT_EXIST', "The entered email/password does not match. ");
 define('AGENT_EMAIL_NOT_VERIFIED', "Email is not verified.");
 define('AGENT_ACCOUNT_DEACTIVE', "This account is inactive, Please contact to administrator");
