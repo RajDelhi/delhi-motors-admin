@@ -119,7 +119,7 @@
 								<ul id="menu-main-navigation-1" class="main-navigation-menu">
 									<!--<li><a href="<?= base_url() . 'advertise'; ?>">Advertise</a></li>-->
 									<?php if (!session()->get('emp_id')) { ?>
-										<li><a href="<?= base_url() . 'login' ?>">Login</a></li>
+										<li><a href="<?= base_url() . 'login' ?>">Login1</a></li>
 									<?php } else { ?>
 										<?php $emp_name = session()->get('emp_first_name') ?>
                                                                                 <li><a href="<?= base_url() . 'dashboard' ?>">Dashboard</a></li>
