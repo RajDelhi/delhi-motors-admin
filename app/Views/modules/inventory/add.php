@@ -83,12 +83,6 @@
                         <label for="field3" class="form-label">CGST Value</label>
                         <input type="text" class="form-control cgst_tax_value bc" id="cgst_tax_value" placeholder="" name="cgst_tax_value[]" value="" autocomplete="off" readonly>
                     </div>
-                    <!-- <div class="col-md-1">
-                        <label for="field3" class="form-label" title="Base Price without tax">B. Price</label>
-                        <input type="text" class="form-control base_price" id="base_price" placeholder="" name="base_price[]"
-                            value="" autocomplete="off">
-                    </div> -->
-                    
 
                     <div class="col-md-1">
                         <label for="field3" class="form-label">MRP</label>
@@ -365,12 +359,6 @@
                 delay: 100,
                 autoFocus: true
             }).autocomplete("instance")._renderItem = function (ul, item) {
-                
-                if (item == null || item == '') {
-                    console.log('HERE');
-                    return $("<li>").append("<div>No results found</div>").appendTo(ul);
-                }
-     
                 return $("<li>").append("<div id=" + item.id + " >" + item.name + "</div>").appendTo(ul);
             };
 
