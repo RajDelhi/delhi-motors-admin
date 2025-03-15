@@ -45,6 +45,8 @@
                         <label for="field1" class="form-label">Item</label>
                         <input type="text" class="item_name form-control" id="item_name" placeholder="" name="item_name[]"
                             value="" autocomplete="off">
+                        <input type="hidden" class="item_id" id="item_id" placeholder="" name="item_id[]"
+                            value="" autocomplete="off">   
                     </div>
                     <div class="col-md-1">
                         <label for="field2" class="form-label">Unit</label>
@@ -57,11 +59,11 @@
                     </div>
                     <div class="col-md-1">
                         <label for="field2" class="form-label">SGST</label>
-                        <input type="text" class="form-control sgst_tax_rate bc" id="sgst_tax_rate" placeholder="" name="tax_rate[]" value="" autocomplete="off" readonly>
+                        <input type="text" class="form-control sgst_tax_rate bc" id="sgst_tax_rate" placeholder="" name="sgst_tax_rate[]" value="" autocomplete="off" readonly>
                     </div>
                     <div class="col-md-1">
                         <label for="field2" class="form-label">CGST</label>
-                        <input type="text" class="form-control cgst_tax_rate bc" id="cgst_tax_rate" placeholder="" name="tax_rate[]" value="" autocomplete="off" readonly>
+                        <input type="text" class="form-control cgst_tax_rate bc" id="cgst_tax_rate" placeholder="" name="cgst_tax_rate[]" value="" autocomplete="off" readonly>
                     </div>
                     <div class="col-md-1">
                         <label for="field2" class="form-label">QTY</label>
@@ -75,11 +77,11 @@
                     </div>
                     <div class="col-md-1" style="width: 120px;">
                         <label for="field3" class="form-label">SGST Value</label>
-                        <input type="text" class="form-control sgst_tax_value bc" id="sgst_tax_value" placeholder="" name="tax_value[]" value="" autocomplete="off" readonly>
+                        <input type="text" class="form-control sgst_tax_value bc" id="sgst_tax_value" placeholder="" name="sgst_tax_value[]" value="" autocomplete="off" readonly>
                     </div>
                     <div class="col-md-1" style="width: 120px;">
                         <label for="field3" class="form-label">CGST Value</label>
-                        <input type="text" class="form-control cgst_tax_value bc" id="cgst_tax_value" placeholder="" name="tax_value[]" value="" autocomplete="off" readonly>
+                        <input type="text" class="form-control cgst_tax_value bc" id="cgst_tax_value" placeholder="" name="cgst_tax_value[]" value="" autocomplete="off" readonly>
                     </div>
                     <!-- <div class="col-md-1">
                         <label for="field3" class="form-label" title="Base Price without tax">B. Price</label>
@@ -212,7 +214,7 @@
         $("#add_row").click(function () {
             var div_count = $('#row_1').parent().children().length;
             var currnet_div = div_count - 1;
-            $('#row_'+currnet_div).after('<div id="row_'+div_count+'" class="row mb-3 align-items-center"><div class="col-md-2"><input type="text" class="required item_name form-control " id="item_name" placeholder="" name="item_name[]" value="" autocomplete="off"></div><div class="col-md-1"><input type="text" class="form-control unit bc" id="unit" placeholder="" name="unit[]" value="" autocomplete="off" readonly></div><div class="col-md-1" style="width: 120px;"><input type="text" class="form-control hsd_code bc" id="hsd_code" placeholder="" name="HSN_code[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control sgst_tax_rate bc" id="sgst_tax_rate" placeholder="" name="tax_rate[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control cgst_tax_rate bc" id="cgst_tax_rate" placeholder="" name="tax_rate[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control qty" id="qty" placeholder="" name="quantity[]" value="" autocomplete="off"></div><div class="col-md-1"><input type="text" class="form-control buy_price" id="buy_price" placeholder="" name="buy_price[]" value="" autocomplete="off"></div><div class="col-md-1" style="width: 120px;"><input type="text" class="form-control sgst_tax_value bc" id="sgst_tax_value" placeholder="" name="tax_value[]" value="" autocomplete="off" readonly></div><div class="col-md-1" style="width: 120px;"><input type="text" class="form-control cgst_tax_value bc" id="cgst_tax_value" placeholder="" name="tax_value[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control mrp_price" id="mrp_price" placeholder="" name="mrp_price[]" value="" autocomplete="off"></div><div class="col-md-1"><input type="text" class="form-control net_value bc" id="net_value" placeholder="" name="net_value[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><span class="input-group-btn"><button class="remove_row btn btn-danger" type="button" id="remove_row_'+div_count+'">Remove</button></span></div></div>');
+            $('#row_'+currnet_div).after('<div id="row_'+div_count+'" class="row mb-3 align-items-center"><div class="col-md-2"><input type="text" class="required item_name form-control " id="item_name" placeholder="" name="item_name[]" value="" autocomplete="off"><input type="hidden" class="item_id" id="item_id" name="item_id[]" > </div><div class="col-md-1"><input type="text" class="form-control unit bc" id="unit" placeholder="" name="unit[]" value="" autocomplete="off" readonly></div><div class="col-md-1" style="width: 120px;"><input type="text" class="form-control hsd_code bc" id="hsd_code" placeholder="" name="HSN_code[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control sgst_tax_rate bc" id="sgst_tax_rate" placeholder="" name="sgst_tax_rate[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control cgst_tax_rate bc" id="cgst_tax_rate" placeholder="" name="cgst_tax_rate[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control qty" id="qty" placeholder="" name="quantity[]" value="" autocomplete="off"></div><div class="col-md-1"><input type="text" class="form-control buy_price" id="buy_price" placeholder="" name="buy_price[]" value="" autocomplete="off"></div><div class="col-md-1" style="width: 120px;"><input type="text" class="form-control sgst_tax_value bc" id="sgst_tax_value" placeholder="" name="sgst_tax_value[]" value="" autocomplete="off" readonly></div><div class="col-md-1" style="width: 120px;"><input type="text" class="form-control cgst_tax_value bc" id="cgst_tax_value" placeholder="" name="cgst_tax_value[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><input type="text" class="form-control mrp_price" id="mrp_price" placeholder="" name="mrp_price[]" value="" autocomplete="off"></div><div class="col-md-1"><input type="text" class="form-control net_value bc" id="net_value" placeholder="" name="net_value[]" value="" autocomplete="off" readonly></div><div class="col-md-1"><span class="input-group-btn"><button class="remove_row btn btn-danger" type="button" id="remove_row_'+div_count+'">Remove</button></span></div></div>');
             $("#addListingForm").validate();
         });
         //  create function to add multiple row  in in one click 
@@ -344,6 +346,7 @@
                     
                // #add_row $('.item_name').parent().parent().children().find('.hsd_code')  
                     $(current_obj).parent().parent().children().find('.item_name').val(ui.item.name);
+                    $(current_obj).parent().parent().children().find('.item_id').val(ui.item.id);
                     $(current_obj).parent().parent().children().find('.hsd_code').val(ui.item.hsn_code);
                     $(current_obj).parent().parent().children().find('.sgst_tax_rate').val(ui.item.sgst_tax_rate);
                     $(current_obj).parent().parent().children().find('.cgst_tax_rate').val(ui.item.cgst_tax_rate);

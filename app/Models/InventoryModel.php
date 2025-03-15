@@ -60,8 +60,11 @@ class InventoryModel extends Model
             $this->item_builder->whereIn('mls_status', array('active', 'close'));
         }
 
-        if (!empty($join_table) && $join_table == 'inventory_detail') {
-            $this->item_builder->join('inventory_detail', 'inventory_detail.inventory_id = inventory.inventory_id');
+        if (!empty($join_table) && in_array("inventory_detail",$join_table )) {
+            $this->item_builder->join('inventory_detail', 'inventory_detail.inventory_id = inventory.inventory_id', "LEFT");
+        }
+        if (!empty($join_table) && in_array("items",$join_table )) {
+            $this->item_builder->join('items', 'inventory_detail.inventory_id = items.id', "LEFT");
         }
         if (!empty( $group_by)) {
             $this->item_builder->groupBy($group_by);

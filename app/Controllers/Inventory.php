@@ -29,7 +29,8 @@ class Inventory extends BaseController
             $whare = array("inventory.active" => '1');
             $order_by = 'inventory.inventory_id desc';
             $group_by = 'inventory_detail`.`inventory_id' ;
-            $item_list = $this->inventory_obj->get_inventory_list($whare, $order_by,'','inventory_detail', $select,  $group_by);
+            $join_table = array("inventory_detail");
+            $item_list = $this->inventory_obj->get_inventory_list($whare, $order_by,'',$join_table, $select,  $group_by);
            // echo "<pre>"; print_r($item_list); die;
             $data['list'] = $item_list;
             $data['userName'] = 0;
@@ -64,20 +65,23 @@ class Inventory extends BaseController
         $inventory_id =  $this->inventory_obj->add_inventory($invoice_params);
         // save vandor level detalils
         if ($inventory_id) {
-           // echo "<pre>"; print_r($_POST); 
+            // echo "<pre>"; print_r($_POST);  die;
            $count = count($_POST['item_name']);
                 for($i = 0; $i < $count; $i++) {        
                    
                     $invoice_detail_param['inventory_id'] =   $inventory_id;
                     $invoice_detail_param['created_by']   = $emp_id;    
                     $invoice_detail_param['item_name'] =   !empty($_POST['item_name'][$i]) ? $_POST['item_name'][$i] : "";
+                    $invoice_detail_param['item_id'] =   !empty($_POST['item_id'][$i]) ? $_POST['item_id'][$i] : "";
                     $invoice_detail_param['HSN_code']  =   !empty($_POST['HSN_code'][$i]) ? $_POST['HSN_code'][$i] : "";
-                    $invoice_detail_param['tax_rate']  =   !empty($_POST['tax_rate'][$i]) ? $_POST['tax_rate'][$i] : "";
+                    $invoice_detail_param['sgst_tax_rate']  =   !empty($_POST['sgst_tax_rate'][$i]) ? $_POST['sgst_tax_rate'][$i] : "";
+                    $invoice_detail_param['cgst_tax_rate']  =   !empty($_POST['cgst_tax_rate'][$i]) ? $_POST['cgst_tax_rate'][$i] : "";
                     $invoice_detail_param['quantity']  =   !empty($_POST['quantity'][$i]) ? $_POST['quantity'][$i] : "";
                     $invoice_detail_param['unit_type']  =   !empty($_POST['unit'][$i]) ? $_POST['unit'][$i] : "";
                     $invoice_detail_param['mrp']        =   !empty($_POST['mrp_unit'][$i]) ? $_POST['mrp_unit'][$i] : "";
                     $invoice_detail_param['base_price']  =   !empty($_POS['base_price'][$i]) ? $_POST['base_price'][$i] : "";
-                    $invoice_detail_param['tax_value']  =   !empty($_POST['tax_value'][$i]) ? $_POST['tax_value'][$i] : "";
+                    $invoice_detail_param['sgst_tax_value']  =   !empty($_POST['sgst_tax_value'][$i]) ? $_POST['sgst_tax_value'][$i] : "";
+                    $invoice_detail_param['cgst_tax_value']  =   !empty($_POST['cgst_tax_value'][$i]) ? $_POST['cgst_tax_value'][$i] : "";
                     $invoice_detail_param['net_value']  =   !empty($_POST['net_value'][$i]) ? $_POST['net_value'][$i] : "";
                     $last_insert_id = $this->inventory_obj->add_inventory_details($invoice_detail_param);
             }
@@ -104,7 +108,7 @@ class Inventory extends BaseController
 
             $data = array();
             $where = array('inventory.inventory_id' => $inventory_id);
-            $join_table = "inventory_detail";
+            $join_table = array("inventory_detail");
             $inventory_data = $this->inventory_obj->get_inventory_list($where,'','',$join_table);
            
             $data['inventory_data'] = !empty($inventory_data) ? $inventory_data: "";
