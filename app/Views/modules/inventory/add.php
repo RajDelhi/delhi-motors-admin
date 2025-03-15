@@ -143,19 +143,13 @@
                 'item_name[]': {
                     required: true
                 },
-                item_HSN_code: {
+                'quantity[]': {
                     required: true
                 },
-                confirm_item_HSN_code: {
-                    required: true,
-                    minlength: 3,
-                    equalTo: "#item_HSN_code"
-                },
-                price: {
-                    number: true,
+                'buy_price[]': {
                     required: true
-                }, quantity: {
-                    number: true,
+                },
+                "mrp_price[]": {
                     required: true
                 }
 

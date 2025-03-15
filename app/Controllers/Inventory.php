@@ -163,12 +163,12 @@ class Inventory extends BaseController
 
     }
 
-    public function delete_item_ajax()
+    public function delete_inventory_ajax()
     {
         if (!empty($_POST['id'])) {
             $item_id = $_POST['id'];
-            $where = array('item_id' => $item_id);
-            $status = $this->item_obj->delete_list($where);
+            $where = array('inventory_id' => $item_id);
+            $status = $this->inventory_obj->delete_invetory($where);
 
             if ($status) {
                 $response['status'] = 1;

@@ -22,7 +22,7 @@
         </div>
     </div>
 </div>
-<?php echo "<pre>"; print_r(); die;  ?>
+
 <main id="main">
     <div class="row main-inner" style="margin: auto">
         <form name="addListingForm" id="addListingForm" method="POST">

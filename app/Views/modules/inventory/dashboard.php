@@ -150,7 +150,7 @@
 		}
 		$.ajax({
 			type: "POST",
-			url: "<?= base_url() . 'delete-list-item'; ?>",
+			url: "<?= base_url() . 'delete-inventory-item'; ?>",
 			cache: false,
 			data: {
 				id: list_id

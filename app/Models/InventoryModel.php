@@ -80,12 +80,12 @@ class InventoryModel extends Model
 
     }
 
-    public function delete_list($where = array())
+    public function delete_invetory($where = array())
     {
         $status = false;
         $emp_id = session()->get('emp_id');
         if (!empty($where)) {
-            $this->item_builder->set('item_active', '0');
+            $this->item_builder->set('active', '0');
             $this->item_builder->set('deleted_by', $emp_id);
             $this->item_builder->where($where);
             $this->item_builder->update();
