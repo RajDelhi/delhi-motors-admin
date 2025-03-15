@@ -46,7 +46,7 @@ $routes->post('add-inventory', 'Inventory::add_inventory_ajax', ['filter' => 'au
 $routes->get('edit-inventory/(:any)', 'Inventory::edit_inventory/$1', ['filter' => 'authGuard']);
 $routes->post('edit-inventory-ajax', 'Inventory::edit_list_ajax', ['filter' => 'authGuard']);
 $routes->post('delete-inventory-item', 'Inventory::delete_inventory_ajax', ['filter' => 'authGuard']);
-$routes->post('read-item', 'Inventory::read_item', ['filter' => 'authGuard']);
+$routes->post('read-item', 'Inventory::read_item', ['filter' => 'authGuard']);  
 
 
 //******************************************************** */
