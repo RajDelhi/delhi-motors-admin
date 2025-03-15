@@ -18,7 +18,7 @@ $routes->get('forget-password', 'Login::forget_password');
 $routes->post('send-password-link', 'Login::send_password_link');
 $routes->get('password-reset/(:any)', 'Login::reset_password/$1');
 $routes->post('reset-password-value', 'Login::reset_password_value');
-$routes->get('resend-email/(:any)', 'Login::resend_mail/$1');
+$routes->get('resend-email/(:any)', 'Login::resend_mail/$1'); 
 
 
 //**********Admin Routing ********************************************** */
