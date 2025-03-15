@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\EmployeeModel;
 use App\Models\ItemModel;
+use App\Models\InventoryModel;
 //use App\Models\StatesModel;
 //use App\Models\PropertyModel;
 
@@ -13,6 +14,7 @@ class Item extends BaseController
     public function __construct()
     {
         $this->session = session();
+        $this->inventory_obj = new InventoryModel();
         $this->item_obj = new ItemModel();
         helper('common');
 
@@ -23,34 +25,28 @@ class Item extends BaseController
         $emp_id =  $this->session->get('emp_id');
         
         if (!empty($emp_id)) {
-           // $whare['emp_id'] = $emp_id;
-            $whare['item_active'] = 1;
-            $order_by = 'item_id desc';
+            $whare = array("items.active" => '1');
+            $order_by = 'items.id desc';
             $item_list = $this->item_obj->get_item_list($whare, $order_by);
             $data['list'] = $item_list;
-            $data['userName'] = 0;
+           
         }
         $data['page_title'] = 'Dashboard';
-        return view('modules/item/dashboard', $data);
+        return view('modules/item/item_dashboard', $data);
     }
 
-    public function add_list()
+    public function add_item()
     {
         $data = array();
         $emp_id = session()->get('emp_id');
         $data['emp_id'] = $emp_id;
-//        $state_arr = $this->state_obj->get_states();
-//        $state_list = array();
-//        foreach ($state_arr as $state_arr_data) {
-//            $state_list[$state_arr_data['abbrev']] = $state_arr_data['name'];
-//        }
-//        $data['state_list'] = $state_list;
         $data['page_title'] = 'Add Item';
-        return view('modules/item/add', $data);
+        return view('modules/item/add_item', $data);
     }
 
-    public function add_mls_ajax()
+    public function add_item_ajax()
     {
+       
         $emp_id =  $this->session->get('emp_id');
         if (empty($emp_id)) {
             $response['status'] = 0;
@@ -59,21 +55,25 @@ class Item extends BaseController
 
         }
 
-        $item_params['item_name'] = !empty($_POST['item_name']) ? $_POST['item_name'] : "";
-        $item_params['item_HSN_code'] = !empty($_POST['item_HSN_code']) ? $_POST['item_HSN_code'] : "";
-        $item_params['price'] = !empty($_POST['price']) ? $_POST['price'] : "";
-        $item_params['quantity'] = !empty($_POST['quantity']) ? $_POST['quantity'] : "";
-        $item_params['emp_id'] = $emp_id;
-        $item_params['item_purchase_date'] = !empty($_POST['item_purchase_date']) ? $_POST['item_purchase_date'] : "";
-        $item_params['item_description'] = !empty($_POST['item_description']) ? $_POST['item_description'] : "";
-        $status = $this->item_obj->add_items($item_params);
-        if ($status) {
-            $response['status'] = 1;
-            $response['message'] = ADD_MLS_MSG;
-            $response['URL'] = base_url() . 'item-list';
-            session()->setFlashdata('success_smg', ADD_MLS_MSG);
-            return json_encode($response);
-        }
+        $item_param['created_by']       =   $emp_id;    
+        $item_param['name']             =   !empty($_POST['item_name']) ? $_POST['item_name'] : "";
+        $item_param['hsn_code']         =   !empty($_POST['item_HSN_code']) ? $_POST['item_HSN_code'] : "";
+        $item_param['unit']             =   !empty($_POST['unit_type']) ? $_POST['unit_type'] : "";
+        $item_param['sgst_tax_rate']         =   !empty($_POST['sgst_tax_rate']) ? $_POST['sgst_tax_rate'] : "";
+        $item_param['cgst_tax_rate']         =   !empty($_POST['cgst_tax_rate']) ? $_POST['cgst_tax_rate'] : "";
+        
+
+        $last_insert_id = $this->item_obj->add_items($item_param);
+         
+            if ($last_insert_id) {
+                $response['status'] = 1;
+                $response['message'] = ADD_MLS_MSG;
+                $response['URL'] = base_url() . 'item-list';
+                session()->setFlashdata('success_smg', ADD_MLS_MSG);
+                return json_encode($response);
+            }
+           
+        
         $response['status'] = 0;
         $response['message'] = TECHNICAL_ERROR;
         return json_encode($response);
@@ -81,25 +81,16 @@ class Item extends BaseController
 
     }
 
-    public function edit_list($id = "")
-    {
+    public function edit_item($id = "")
+    { 
         $item_id = !empty($id) ? base64_decode($id) : "";
         if (!empty($item_id)) {
-
             $data = array();
-            $where = array('item_id' => $item_id);
+            $where = array('id' => $item_id);
             $item_data = $this->item_obj->get_item_list($where);
             $data['item_data'] = !empty($item_data[0]) ? $item_data[0] : "";
-//            $state_arr = $this->state_obj->get_states();
-//            $state_list = array();
-//            foreach ($state_arr as $state_arr_data) {
-//                $state_list[$state_arr_data['abbrev']] = $state_arr_data['name'];
-//            }
-
-//           $data['mls_status_list'] = array('active' => 'Active', 'close' => 'Close', 'deleted' => 'Delete');
-//            $data['state_list'] = $state_list;
-            $data['page_title'] = 'Edit MLS';
-            return view('modules/item/edit', $data);
+            $data['page_title'] = 'Edit Item';
+            return view('modules/item/edit_item', $data);
 
 
         } else {
@@ -110,7 +101,7 @@ class Item extends BaseController
 
     }
 
-    public function edit_list_ajax()
+    public function edit_item_ajax()
     {
         $emp_id =  $this->session->get('emp_id');
         
@@ -121,17 +112,16 @@ class Item extends BaseController
 
         }
 
-        $item_params['item_name'] = !empty($_POST['item_name']) ? $_POST['item_name'] : "";
-        $item_params['item_HSN_code'] = !empty($_POST['item_HSN_code']) ? $_POST['item_HSN_code'] : "";
-        $item_params['price'] = !empty($_POST['price']) ? $_POST['price'] : "";
-        $item_params['quantity'] = !empty($_POST['quantity']) ? $_POST['quantity'] : "";
-        $item_params['emp_id'] = $emp_id;
-        $item_params['item_purchase_date'] = !empty($_POST['item_purchase_date']) ? $_POST['item_purchase_date'] : "";
-        $item_params['item_description'] = !empty($_POST['item_description']) ? $_POST['item_description'] : "";
-        $item_id = !empty($_POST['item_id']) ? $_POST['item_id'] : "";
+        $item_param['created_by']       =   $emp_id;    
+        $item_id                        =   !empty($_POST['id']) ? $_POST['id'] : "";
+        $item_param['name']             =   !empty($_POST['item_name']) ? $_POST['item_name'] : "";
+        $item_param['hsn_code']         =   !empty($_POST['item_HSN_code']) ? $_POST['item_HSN_code'] : "";
+        $item_param['unit']             =   !empty($_POST['unit_type']) ? $_POST['unit_type'] : "";
+        $item_param['cgst_tax_rate']         =   !empty($_POST['cgst_tax_rate']) ? $_POST['cgst_tax_rate'] : "";
+        $item_param['sgst_tax_rate']         =   !empty($_POST['sgst_tax_rate']) ? $_POST['sgst_tax_rate'] : "";
         
         if (!empty($item_id)) {
-            $status = $this->item_obj->update_item($item_params, $item_id);
+            $status = $this->item_obj->update_item($item_param, $item_id);
 
             if ($status) {
                 $response['status'] = 1;
@@ -156,7 +146,7 @@ class Item extends BaseController
     {
         if (!empty($_POST['id'])) {
             $item_id = $_POST['id'];
-            $where = array('item_id' => $item_id);
+            $where = array('id' => $item_id);
             $status = $this->item_obj->delete_list($where);
 
             if ($status) {
@@ -213,6 +203,33 @@ class Item extends BaseController
             return view('modules/item/dashboard', $data);
         }
         redirect(base_url());
+
+    }
+    
+    
+    public function read_item()
+    {
+        if (!empty($_POST["term"]) || !empty($_POST["card_id"])) {
+            $term = !empty($_POST["term"]) ? $_POST["term"] : '';
+            
+            $final_result_array = (array) $this->item_obj->get_item_list("", "", "","",$term );
+           
+            //$final_result_array = array();
+//            foreach ($result as $player_array) {
+//                $final_result_array[] = array('signer_id' => $player_array['card_id'], 'fee' => $player_array['fees'], 'value' => trim($player_array['display_name'],','), 'hof' => $player_array['hof'], 'notable' => $player_array['notable']);
+//            }
+            if (!empty($final_result_array)) {
+                echo json_encode(array('status' => 'success', 'result' => $final_result_array));
+                die;
+            } else {
+                echo json_encode(array('status' => 'error', 'result' => ''));
+                die();
+            }
+            if (!empty($final_result_array)) {
+                echo json_encode($final_result_array);
+                die;
+            }
+        }
 
     }
 

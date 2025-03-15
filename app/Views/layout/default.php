@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="<?= base_url("styles/style.css?") ?>" />
 
 	<script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=dispeosdr4jt0ezjcakawa" async="true"></script>
+
 </head>
 
 <body class="home" style="display: none;">
@@ -125,7 +126,8 @@
                                                                                 <li><a href="<?= base_url() . 'dashboard' ?>">Dashboard</a></li>
                                                                                 <li><a href="<?= base_url() . 'dashboard' ?>">Estimate</a></li>
                                                                                 <li><a href="<?= base_url() . 'dashboard' ?>">Billing</a></li>
-                                                                                <li><a href="<?= base_url() . 'item-list' ?>">Inventory</a></li>
+                                                                                <li><a href="<?= base_url() . 'inventory-list' ?>">Inventory</a></li>
+                                                                                <li><a href="<?= base_url() . 'item-list' ?>">Items</a></li>
                                                                                 <li><a href="<?= base_url() . 'agent-profile' ?>">Edit Profile</a></li>
 										<li><a href="<?= base_url() . 'logout' ?>">Logout <?= "($emp_name)"; ?></a></li>
 										
@@ -153,7 +155,7 @@
 				<div class="column no-float">
 					<div class="footer-inner">
 						<div class="footer-logo">
-							<img src="<?= base_url('images/delhi_motors_logo') ?> " alt="Delhi Motors">
+							<img src="<?= base_url('images/delhi_motors_logo.png') ?> " alt="Delhi Motors">
 						</div>
 
 						<div class="footer-info">

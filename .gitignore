@@ -2,3 +2,4 @@
 .env
 /.htaccess
 /.idea
+/nbproject/private/

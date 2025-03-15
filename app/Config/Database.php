@@ -26,10 +26,10 @@ class Database extends Config
      */
     public array $production = [
         'DSN'          => '',
-        'hostname'     => '',
+        'hostname'     => 'localhost',
         'username'     => '',
         'password'     => '',
-        'database'     => '',
+        'database'     => 'delhi_motors',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
